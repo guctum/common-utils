@@ -11,7 +11,7 @@ public class UtilsService {
         URL obj = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
         connection.setRequestMethod("GET");
-        connection.setRequestProperty("User-Agent", "Discord bot for jokes");
+        connection.setRequestProperty("User-Agent", "grog industries");
         connection.setRequestProperty("Accept", "text/plain");
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));

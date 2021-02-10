@@ -24,4 +24,17 @@ public class JokeService {
         log.debug(joke.toString());
         return joke.toString();
     }
+
+    public String getJoke(String searchParam) {
+        StringBuilder joke = new StringBuilder();
+        try {
+            String url = "https://icanhazdadjoke.com/search?term=" + searchParam;
+            UtilsService.getFromUrl(joke, url);
+        } catch (IOException e) {
+            log.debug(e.getLocalizedMessage());
+//            e.getLocalizedMessage();
+        }
+        log.debug(joke.toString());
+        return joke.toString();
+    }
 }

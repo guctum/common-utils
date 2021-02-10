@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BaseController {
+public class Controller {
 
     @Autowired
     private JokeService jokeService;
@@ -23,6 +23,11 @@ public class BaseController {
     @RequestMapping("/joke")
     public String getJoke() {
         return jokeService.getJoke();
+    }
+
+    @RequestMapping("/joke/{searchParam}")
+    public String searchJoke(String searchParam) {
+        return jokeService.getJoke(searchParam);
     }
 
     @RequestMapping("/chuck")

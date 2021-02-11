@@ -25,7 +25,7 @@ public class Controller {
         return jokeService.getJoke();
     }
 
-    @RequestMapping("/joke/{searchParam}")
+    @RequestMapping("/searchJoke")
     public String searchJoke(String searchParam) {
         return jokeService.getJoke(searchParam);
     }

@@ -1,5 +1,6 @@
 package com.uctum.common.utils.controller;
 
+import com.uctum.common.utils.service.JokeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,6 +20,9 @@ public class BaseControllerTest {
     @Autowired
     private MockMvc mvc;
 
+    @Autowired
+    JokeService jokeService;
+
     @Test
     public void getHello() throws Exception {
         mvc.perform(
@@ -33,6 +37,16 @@ public class BaseControllerTest {
                 MockMvcRequestBuilders.get("/joke").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(notNullValue()));
+    }
+
+    @Test
+    public void searchJoke() throws Exception {
+        String searchParam = "cat";
+        mvc.perform(
+                MockMvcRequestBuilders.get("/searchJoke?searchParam=" + searchParam).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(notNullValue()));
+        System.out.println(jokeService.getJoke(searchParam));
     }
 
     @Test

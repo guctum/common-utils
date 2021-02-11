@@ -28,7 +28,7 @@ public class JokeService {
     public String getJoke(String searchParam) {
         StringBuilder joke = new StringBuilder();
         try {
-            String url = "https://icanhazdadjoke.com/search?term=" + searchParam;
+            String url = "https://icanhazdadjoke.com/search?term=" + searchParam + "&page=1&limit=1";
             UtilsService.getFromUrl(joke, url);
         } catch (IOException e) {
             log.debug(e.getLocalizedMessage());

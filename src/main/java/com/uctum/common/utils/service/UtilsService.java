@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class UtilsService {
-    static void getFromUrl(StringBuilder fact, String url) throws IOException {
+    static void getFromUrl(StringBuilder searchObject, String url) throws IOException {
         URL obj = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
         connection.setRequestMethod("GET");
@@ -18,7 +18,7 @@ public class UtilsService {
         String inputLine;
 
         while ((inputLine = bufferedReader.readLine()) != null) {
-            fact.append(inputLine);
+            searchObject.append(inputLine);
         }
 
         bufferedReader.close();

@@ -1,11 +1,13 @@
 package com.uctum.common.utils.controller;
 
 import com.uctum.common.utils.service.ChuckService;
+import com.uctum.common.utils.service.FileService;
 import com.uctum.common.utils.service.JokeService;
-import com.uctum.common.utils.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.File;
 
 @RestController
 public class Controller {
@@ -17,7 +19,7 @@ public class Controller {
     private ChuckService chuckService;
 
     @Autowired
-    private WeatherService weatherService;
+    private FileService fileService;
 
     @RequestMapping("/")
     public String getIndex() {
@@ -39,8 +41,8 @@ public class Controller {
         return chuckService.getChuckNorrisFact();
     }
 
-    @RequestMapping("/weather")
-    public String getWeatherByCity(String city, String state) {
-        return weatherService.getWeather(city, state);
+    @RequestMapping("/uploadMeme")
+    public void uploadMeme(File meme) {
+        fileService.uploadMemeToBucket(meme);
     }
 }
